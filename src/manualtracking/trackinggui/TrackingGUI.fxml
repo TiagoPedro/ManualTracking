@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="appPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1980.0" styleClass="canvasImageClass" stylesheets="@canvas.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manualtracking.trackinggui.TrackingGUIController">
+   <left>
+      <VBox fx:id="leftBar" prefHeight="1005.0" prefWidth="75.0" styleClass="leftBarClass" stylesheets="@leftbar.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="sideMenuButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onMouseClicked="#quitApplication" prefHeight="75.0" prefWidth="75.0" styleClass="sideMenuButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="markButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onMouseClicked="#handleMouseClickOnMark" prefHeight="75.0" prefWidth="75.0" styleClass="markButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="textNoteButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" onMouseClicked="#handleMouseClickOnTextNote" prefHeight="75.0" prefWidth="75.0" styleClass="textNoteButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="speechButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" styleClass="activateSpeechButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="notesButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" styleClass="notesButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="eventsButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" styleClass="eventsButtonClass" stylesheets="@leftbar.css" />
+            <Button fx:id="visualAnglesButton" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" styleClass="visualAngleButtonClass" stylesheets="@leftbar.css" />
+         </children>
+         <padding>
+            <Insets top="-60.0" />
+         </padding>
+      </VBox>
+   </left>
+   <top>
+      <HBox fx:id="topBar" alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="1845.0" styleClass="topBarClass" stylesheets="@topbar.css" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1471.0" text="QUICK MODE - ISCTE 2015" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="blockButton" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onMouseClicked="#handleMouseClickOnBlock" prefHeight="60.0" prefWidth="60.0" styleClass="blockButton" stylesheets="@topbar.css" />
+            <Button fx:id="undoButton" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onMouseClicked="#undo" prefHeight="60.0" prefWidth="60.0" styleClass="undoButton" stylesheets="@topbar.css" />
+            <Button fx:id="redoButton" layoutX="1517.0" layoutY="10.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onMouseClicked="#redo" prefHeight="60.0" prefWidth="60.0" styleClass="redoButton" stylesheets="@topbar.css" />
+            <Button fx:id="deleteButton" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onMouseClicked="#clearPaths" prefHeight="60.0" prefWidth="60.0" styleClass="deleteButton" stylesheets="@topbar.css" />
+            <Button fx:id="accountButton" alignment="CENTER_RIGHT" maxHeight="60.0" maxWidth="277.0" minHeight="60.0" minWidth="243.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="243.0" styleClass="subjectButton" stylesheets="@topbar.css" text="ANDRÉ MARQUES" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                     <image>
+                        <Image url="@../../assets/white_subject_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="60.0" />
+               </HBox.margin></Button>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" />
+         </BorderPane.margin></HBox>
+   </top>
+   <center>
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="1005.0" prefViewportHeight="1030.0" prefViewportWidth="1870.0" prefWidth="1845.0" styleClass="scrollPaneClass" stylesheets="@canvas.css">
+         <content>
+            <Canvas fx:id="canvas" height="1018.0" onMouseClicked="#handleMouseClickOnPlan" onMouseDragged="#handleMouseDraggedOnPlan" onMousePressed="#handleMousePressedOnPlan" onMouseReleased="#handleMouseReleasedOnPlan" onRotate="#handleRotateGestureOnPlan" onZoom="#handleZoomGestureOnPlan" styleClass="canvasImageClass" width="1905.0" BorderPane.alignment="TOP_LEFT" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

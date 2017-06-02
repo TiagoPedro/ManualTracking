@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.canvasImageClass
+{
+    -fx-background: rgb(255, 255, 255);
+}
+
+.scrollPaneClass
+{
+    -fx-background: rgb(255, 255, 255);
+}
